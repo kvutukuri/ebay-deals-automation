@@ -2,6 +2,7 @@ package org.kiran.eBay.automation.hubpagetest;
 
 import java.util.concurrent.TimeUnit;
 
+import org.kiran.eBay.automation.pageobject.locators.FeaturedDealsLocators;
 import org.kiran.eBay.automation.pageobject.locators.HubPageLocators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +32,7 @@ public class FeaturedDealTest {
 	
 	@Test
 	public void testFeaturedDealHeading(){
-		WebElement featuredHeading=driver.findElement(By.className("ebayui-dne-banner-text"));
+		WebElement featuredHeading=driver.findElement(By.className(FeaturedDealsLocators.FEATUREDDEALHEADING));
 		String heading=featuredHeading.getText();
 		Assert.assertEquals(heading, "FEATURED DEALS");
 	}
