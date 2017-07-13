@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 
 public class TrendingDealTest {
 
+	// this is trending deal test class
 	WebDriver driver;
 
 	@BeforeClass
