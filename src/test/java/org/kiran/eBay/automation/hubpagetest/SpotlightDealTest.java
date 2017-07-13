@@ -3,6 +3,7 @@ package org.kiran.eBay.automation.hubpagetest;
 import java.util.concurrent.TimeUnit;
 
 import org.kiran.eBay.automation.pageobject.locators.HubPageLocators;
+import org.kiran.eBay.automation.pageobject.locators.SpotlightDealLocators;
 import org.kiran.eBay.automation.pageobject.validators.HubPageValidator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,47 +22,47 @@ public class SpotlightDealTest {
 	
 	@BeforeClass
 	public void openBrowser(){
-	    driver = new FirefoxDriver();
-	    driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+		driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		driver.manage().window().maximize();		
 		driver.get("http://www.ebay.com/deals/");
 	}
-	
-/*	@AfterClass
+
+	/*	@AfterClass
 	public void closeBrowser(){
 		System.out.println("Current page is closed.");
 		driver.quit();
 	} */
-	
+
 	@Test
 	public void testSpotlightDealBasics(){
-		
+
 		WebElement spotlightDeal = driver.findElement(By.cssSelector(HubPageLocators.SPOTLIGHT_DEALS_LOCATOR));
 		Assert.assertNotNull(spotlightDeal);
-		
-//		HubPageValidator hubValidator = new HubPageValidator(driver);
-//		hubValidator.validateSpotlightDealBasics();
-		
+
+		//		HubPageValidator hubValidator = new HubPageValidator(driver);
+		//		hubValidator.validateSpotlightDealBasics();
+
 	}
-	
+
 	@Test()
 	public void testSpotlightHeading(){
-		
-		String heading=driver.findElement(By.xpath("//h2[contains(text(),'Spotlight Deal')]")).getText();
+
+		String heading=driver.findElement(By.xpath(SpotlightDealLocators.HEADING)).getText();
 		Assert.assertEquals(heading, "SPOTLIGHT DEAL");		
 	}
-	
+
 	@Test()
 	public void testSpotligtItemNameAndImage(){
-		String itemName=driver.findElement(By.xpath("//span[@class='ebayui-ellipsis-3']")).getText();
+		String itemName=driver.findElement(By.xpath(SpotlightDealLocators.ITEMNAME)).getText();
 		Assert.assertNotNull(itemName);
 		WebElement itemImage=driver.findElement(By.className("slashui-image-cntr"));
 		Assert.assertNotNull(itemImage);
 	}
-	
+
 	@Test()
 	public void testLineSeprator(){
-		WebElement testLine=driver.findElement(By.xpath("//div[@id='w2-w0']"));
+		WebElement testLine=driver.findElement(By.xpath(SpotlightDealLocators.TESTLINE));
 		Assert.assertNotNull(testLine);
 	}
 }
